@@ -121,7 +121,7 @@ userInterface.ssOnKeyDown = function (e) {
   }
 
   if (e.keyCode === 50) {
-    canvas.setBackground ('http://mods.slithersessions.com/images/bg-1.jpg');
+    canvas.setBackground ('https://raw.githubusercontent.com/FlushDesert22/ss-mods/refs/heads/master/mods/images/bg-1.jpg');
   }
 
   userInterface.onPrefChange();
@@ -166,7 +166,7 @@ userInterface.playButtonClickListener = function () {
   if (ss.options.useLastHost)
     ss.forceLastHost();
 
-  ss.waitForSnake (function (s) {
+  ss.waitForSlither (function (s) {
     setSkin (s, ss.skins.skin);
   });
 };
