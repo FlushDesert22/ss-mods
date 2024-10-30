@@ -60,7 +60,7 @@ var ss = window.ss = (function() {
             port = eipaddr.split(':')[1].trim();
         forceServer (addy, port);
         connect();
-        ss.waitForSnake (function (s) {
+        ss.waitForSlither (function (s) {
           setSkin (s, ss.skins.skin);
         });
       }
@@ -111,22 +111,22 @@ var ss = window.ss = (function() {
     },
 
     onFrameUpdate: function() {
-      if (! window.playing || window.snake === null) {
+      if (! window.playing || window.slither === null) {
         if (! $(userInterface.connect).is(':visible'))
           $(userInterface.connect).fadeIn();
         return;
       }
 
       // Botstatus overlay
-      if (window.playing && window.snake !== null) {
+      if (window.playing && window.slither !== null) {
           let oContent = [];
 
           oContent.push('fps: ' + userInterface.framesPerSecond.fps);
 
-          // Display the X and Y of the snake
+          // Display the X and Y of the slither
           oContent.push('x: ' +
-              (Math.round(window.snake.xx) || 0) + ' y: ' +
-              (Math.round(window.snake.yy) || 0));
+              (Math.round(window.slither.xx) || 0) + ' y: ' +
+              (Math.round(window.slither.yy) || 0));
 
           if (window.goalCoordinates) {
               oContent.push('target');
@@ -142,9 +142,9 @@ var ss = window.ss = (function() {
           if (userInterface.gfxOverlay) {
               let gContent = [];
 
-              gContent.push('<b>' + window.snake.nk + '</b>');
-              gContent.push(bot.snakeLength);
-              gContent.push('[' + window.rank + '/' + window.snake_count + ']');
+              gContent.push('<b>' + window.slither.nk + '</b>');
+              gContent.push(bot.slitherLength);
+              gContent.push('[' + window.rank + '/' + window.slither_count + ']');
 
               userInterface.gfxOverlay.innerHTML = gContent.join('<br/>');
           }
@@ -153,7 +153,7 @@ var ss = window.ss = (function() {
       if (window.playing && window.visualDebugging) {
           // Only draw the goal when a bot has a goal.
           if (window.goalCoordinates && bot.isBotEnabled) {
-              var headCoord = { x: window.snake.xx, y: window.snake.yy };
+              var headCoord = { x: window.slither.xx, y: window.slither.yy };
               canvas.drawLine(
                   headCoord,
                   window.goalCoordinates,
@@ -185,28 +185,28 @@ var ss = window.ss = (function() {
     /** Override this to react when the server address changes */
     onHostChanged: function() { },
 
-    /** Wait for the player's snake to become available */
-    waitForSnake: function (callback, retries) {
+    /** Wait for the player's slither to become available */
+    waitForSlither: function (callback, retries) {
       if (! ss.isInt (retries))
         retries = 4;
 
       var r = 0;
 
-      function _waitForSnake() {
+      function _waitForSlither() {
         if (r > retries)
           return;
 
-        if (! window.snake) {
-          ss.log('[SS] waiting for snake r=' + r + '...');
+        if (! window.slither) {
+          ss.log('[SS] waiting for slither r=' + r + '...');
           ++r;
-          setTimeout (_waitForSnake, 300);
+          setTimeout (_waitForSlither, 300);
           return;
         }
 
-        callback (window.snake);
+        callback (window.slither);
       }
 
-      return _waitForSnake();
+      return _waitForSlither();
     },
 
     quit: function() {
