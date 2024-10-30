@@ -37,7 +37,7 @@ ss.register ((function() {
     /** Canvas used for drawing the antenna */
     bulb: null,
 
-    /** Adds an antennea to a snake */
+    /** Adds an antennea to a slither */
     addAntenna: function (snk, skin) {
       if (impl.bulb == null) {
         impl.bulb = document.createElement('canvas');
@@ -322,7 +322,7 @@ ss.register ((function() {
                     }
                   });
 
-      window.setSkin = function (snk, skinId) {
+      window.setSkin = function (snk, skinId, customSkinPattern) {
         skinId = parseInt (skinId);
         var isOnSkinChooser = $('#psk').is(':visible');
 
@@ -335,8 +335,8 @@ ss.register ((function() {
         }
 
         impl.resetAntenna (snk);
-        impl.superSetSkin (snk, skinId);
-        if (!isOnSkinChooser && window.snake !== snk) return; // Random snake on the board, let's leave it be.
+        impl.superSetSkin (snk, skinId, customSkinPattern);
+        if (!isOnSkinChooser && window.slither !== snk) return; // Random slither on the board, let's leave it be.
 
         snk.SSkin = false;
         if (skinId > impl.superMaxSkinCv) {
@@ -391,7 +391,7 @@ ss.register ((function() {
         b.addEventListener ('click', function() {
           ss.skins.savedSkin = ss.skins.skin;
           ss.saveOption ('skinId', ss.skins.savedSkin);
-          window.snake.rcv = ss.skins.setStockSkin(ss.skins.savedSkin);
+          window.slither.rcv = ss.skins.setStockSkin(ss.skins.savedSkin);
         }, false);
       }
     },
@@ -416,21 +416,21 @@ ss.register ((function() {
 
     /** go to next skin if rotation is enabled */
     rotate: function() {
-      haveSnake = (typeof window.ws != 'undefined' && !$('#psk').is(':visible') &&
-            typeof window.snake != 'undefined' && window.snake != null);
-      if (! haveSnake)
+      haveSlither = (typeof window.ws != 'undefined' && !$('#psk').is(':visible') &&
+            typeof window.slither != 'undefined' && window.slither != null);
+      if (! haveSlither)
         return;
 
       if (ss.options.rotateSkins) {
         skins.next();
-      } else if ((skins.skin > impl.superMaxSkinCv && !snake.SSkin) || (skins.skin !== snake.rcv && !snake.SSkin)) {
-        setSkin (snake, skins.skin);
+      } else if ((skins.skin > impl.superMaxSkinCv && !slither.SSkin) || (skins.skin !== slither.rcv && !slither.SSkin)) {
+        setSkin (slither, skins.skin);
       }
     },
 
     /** go to the next skin */
     next: function() {
-      if (typeof window.snake == 'undefined')
+      if (typeof window.slither == 'undefined')
         return;
 
       skins.skin += 1;
@@ -438,19 +438,19 @@ ss.register ((function() {
       if (skins.skin > max_skin_cv)
         skins.skin = 0;
 
-      setSkin (window.snake, skins.skin);
+      setSkin (window.slither, skins.skin);
     },
 
     /** go to the previous skin */
     previous: function() {
-      if (typeof window.snake == 'undefined')
+      if (typeof window.slither == 'undefined')
         return;
 
       if (skins.skin <= 0)
         skins.skin = max_skin_cv;
       else
         skins.skin -= 1;
-      setSkin (window.snake, skins.skin);
+      setSkin (window.slither, skins.skin);
     },
 
     /** Set the stock skin. This controls how the skin is visible to other players,
@@ -467,7 +467,7 @@ ss.register ((function() {
                  defined. Stock skin remains ' + skinId + '.');
         return skinId;
       }
-      localStorage.snakercv = stockSkinId;
+      localStorage.slitherrcv = stockSkinId;
       return stockSkinId;
     }
   };
