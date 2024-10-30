@@ -184,8 +184,8 @@ userInterface.playButtonClickListener = function () {
   ss.options.useZoom = ss.loadOption ('useZoom', true);
   ss.options.rotateSkins = ss.loadOption ('rotateSkins', false);
 
-  document.onkeydown = userInterface.ssOnKeyDown;
-  window.onmousedown = userInterface.onmousedown;
+  window.addEventListener("keydown",userInterface.ssOnKeyDown);
+  window.addEventListener("mousedown", userInterface.onmousedown);
   window.addEventListener ('mouseup', userInterface.onmouseup);
 
   // tweak bot Defaults
