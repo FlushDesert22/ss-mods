@@ -35,12 +35,12 @@
 // ==/UserScript==
 
 var loader = document.createElement ('script');
-loader.src = 'https://code.jquery.com/jquery-1.12.3.min.js';
+loader.src = 'https://code.jquery.com/jquery-3.7.1.min.js';
 loader.onload = function() {
-  document.head.innerHTML += '<link rel="stylesheet" href="http://mods.slithersessions.com/css/style.min.css">';
+  document.head.innerHTML += '<link rel="stylesheet" href="https://raw.githubusercontent.com/FlushDesert22/ss-mods/refs/heads/master/mods/css/style.css">';
   var main = document.createElement ('script');
-  main.src = 'http://mods.slithersessions.com/js/ss.min.js';
-  // main.src = 'http://mods.slithersessions.com/js/ss.js'; /* uncomment for debugging */
+  main.src = 'https://raw.githubusercontent.com/FlushDesert22/ss-mods/refs/heads/master/pre-compiled/ss.min.js';
+  // main.src = 'https://raw.githubusercontent.com/FlushDesert22/ss-mods/refs/heads/master/pre-compiled/ss.js'; /* uncomment for debugging */
   main.onload = function() {
     this.parentNode.removeChild (this);
   };
