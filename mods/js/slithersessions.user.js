@@ -30,6 +30,7 @@
 // @updateURL    https://github.com/FlushDesert22/ss-mods/raw/refs/heads/master/mods/js/slithersessions.user.js
 // @downloadURL  https://github.com/FlushDesert22/ss-mods/raw/refs/heads/master/mods/js/slithersessions.user.js
 // @match        http://slither.io/
+// @match        http://slither.com/io
 // @run-at       document-start
 // @grant        GM_xmlhttpRequest
 // ==/UserScript==
