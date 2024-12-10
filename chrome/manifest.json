@@ -10,14 +10,15 @@
   },
 
   "permissions": [
-    "http://mods.slithersessions.com/images/*.jpg",
-    "http://mods.slithersessions.com/images/*.png"
+    "https://raw.githubusercontent.com/FlushDesert22/ss-mods/refs/heads/master/chrome/images/*.jpg",
+    "https://raw.githubusercontent.com/FlushDesert22/ss-mods/refs/heads/master/chrome/images/*.png"
   ],
 
   "content_scripts": [
     {
       "matches": [
-        "*://slither.io/*"
+        "*://slither.io/*",
+        "*://slither.com/io",
       ],
       "js": ["js/content.js"],
       "all_frames": true
