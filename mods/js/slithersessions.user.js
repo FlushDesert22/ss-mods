@@ -27,8 +27,8 @@
 // @description  Slither Sessions Mod Pack
 // @author       Slither Sessions
 // @require      http://code.jquery.com/jquery-latest.js
-// @updateURL    http://mods.slithersessions.com/js/slithersessions.user.js
-// @downloadURL  http://mods.slithersessions.com/js/slithersessions.user.js
+// @updateURL    https://github.com/FlushDesert22/ss-mods/raw/refs/heads/master/mods/js/slithersessions.user.js
+// @downloadURL  https://github.com/FlushDesert22/ss-mods/raw/refs/heads/master/mods/js/slithersessions.user.js
 // @match        http://slither.io/
 // @run-at       document-start
 // @grant        GM_xmlhttpRequest
