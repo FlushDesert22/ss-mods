@@ -30,6 +30,7 @@
 // @downloadURL  http://mods.slithersessions.com/js/ss-no-mods.user.js
 // @require      http://code.jquery.com/jquery-latest.js
 // @match        http://slither.io
+// @match        http://slither.com/io
 // @grant        none
 // @run-at       document-start
 // ==/UserScript==
